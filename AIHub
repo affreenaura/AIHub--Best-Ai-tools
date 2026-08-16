@@ -1,44 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>AIHub | Discover the Best AI Tools</title>
 
 <meta name="description"
-content="Discover the best AI tools for writing, image generation, video, coding, design, marketing and productivity.">
+content="AIHub is a curated platform to discover powerful AI tools for writing, design, image generation, video, coding, marketing, and productivity — all in one place.">
 
 <meta name="keywords"
-content="AI tools, best AI tools, free AI tools, AI websites, AI writing tools, AI image generators, AI video tools, AI coding tools, AI design tools">
+content="AI tools, best AI tools, AI websites, free AI tools, AI writing tools, AI image generators, AI video tools, AI coding tools, AI design tools, AI productivity tools">
 
-<meta name="author"
-content="AIHub">
+<meta name="author" content="Affreen">
 
-<meta name="robots"
-content="index, follow">
+<meta name="robots" content="index, follow">
 
-<meta name="theme-color"
-content="#6c4df6">
+<meta name="theme-color" content="#6c4df6">
 
 <meta property="og:title"
 content="AIHub | Discover the Best AI Tools">
 
 <meta property="og:description"
-content="Explore powerful AI tools for writing, design, coding, video, marketing and productivity.">
+content="Discover powerful AI tools for writing, design, image generation, video, coding, marketing and productivity.">
 
-<meta property="og:type"
-content="website">
+<meta property="og:type" content="website">
 
 
 <style>
 
-/* ================================
+/* =========================
    RESET
-================================ */
+========================= */
 
 * {
     margin: 0;
@@ -51,16 +45,10 @@ html {
 }
 
 body {
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
+    font-family: Arial, Helvetica, sans-serif;
     background: #f7f8fc;
     color: #171923;
-
     line-height: 1.6;
-
     transition: 0.3s;
 }
 
@@ -70,37 +58,31 @@ input {
 }
 
 
-/* ================================
+/* =========================
    NAVBAR
-================================ */
+========================= */
 
 .navbar {
     height: 72px;
-
     padding: 0 7%;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    background:
-        rgba(255,255,255,0.92);
-
+    background: rgba(255,255,255,0.94);
     backdrop-filter: blur(15px);
 
-    border-bottom:
-        1px solid #e7e8ef;
+    border-bottom: 1px solid #e7e8ef;
 
     position: sticky;
     top: 0;
-
     z-index: 1000;
 }
 
 .logo {
     font-size: 26px;
     font-weight: 800;
-
     color: #6c4df6;
 }
 
@@ -111,17 +93,13 @@ input {
 .nav-links {
     display: flex;
     gap: 28px;
-
     list-style: none;
 }
 
 .nav-links a {
     text-decoration: none;
-
     color: #555866;
-
     font-weight: 600;
-
     transition: 0.2s;
 }
 
@@ -134,45 +112,29 @@ input {
     height: 42px;
 
     border: none;
-
     border-radius: 50%;
 
     background: #f0edff;
-
     color: #6c4df6;
 
     cursor: pointer;
-
     font-size: 18px;
 }
 
 
-/* ================================
+/* =========================
    HERO
-================================ */
+========================= */
 
 .hero {
     min-height: 580px;
-
-    padding:
-        105px 7% 80px;
+    padding: 105px 7% 80px;
 
     text-align: center;
 
     background:
-
-        radial-gradient(
-            circle at 20% 20%,
-            #e8e0ff 0,
-            transparent 28%
-        ),
-
-        radial-gradient(
-            circle at 80% 30%,
-            #dceaff 0,
-            transparent 28%
-        ),
-
+        radial-gradient(circle at 20% 20%, #e8e0ff 0, transparent 28%),
+        radial-gradient(circle at 80% 30%, #dceaff 0, transparent 28%),
         #f7f8fc;
 }
 
@@ -180,15 +142,12 @@ input {
     display: inline-block;
 
     background: #ece8ff;
-
     color: #6046df;
 
     padding: 8px 16px;
-
     border-radius: 30px;
 
     font-size: 14px;
-
     font-weight: 700;
 
     margin-bottom: 22px;
@@ -196,72 +155,58 @@ input {
 
 .hero h1 {
     max-width: 900px;
-
     margin: auto;
 
-    font-size:
-        clamp(42px, 7vw, 76px);
-
+    font-size: clamp(42px, 7vw, 76px);
     line-height: 1.05;
 
     letter-spacing: -3px;
 }
 
 .gradient-text {
-    background:
-        linear-gradient(
-            90deg,
-            #6c4df6,
-            #9b5cff,
-            #2979ff
-        );
+    background: linear-gradient(
+        90deg,
+        #6c4df6,
+        #9b5cff,
+        #2979ff
+    );
 
     -webkit-background-clip: text;
-
     color: transparent;
 }
 
 .hero p {
-    max-width: 650px;
-
+    max-width: 700px;
     margin: 25px auto;
 
     color: #686b78;
-
     font-size: 18px;
 }
 
 
-/* ================================
+/* =========================
    SEARCH
-================================ */
+========================= */
 
 .search-box {
     max-width: 700px;
-
     margin: 35px auto 0;
-
     position: relative;
 }
 
 .search-box input {
     width: 100%;
 
-    padding:
-        19px 60px 19px 22px;
+    padding: 19px 60px 19px 22px;
 
-    border:
-        1px solid #dddfea;
-
+    border: 1px solid #dddfea;
     border-radius: 16px;
 
     background: white;
-
     outline: none;
 
     box-shadow:
-        0 12px 35px
-        rgba(40,30,100,0.08);
+        0 12px 35px rgba(40,30,100,0.08);
 }
 
 .search-box input:focus {
@@ -278,13 +223,12 @@ input {
 }
 
 
-/* ================================
-   SECTION TITLE
-================================ */
+/* =========================
+   SECTION
+========================= */
 
 .section-title {
     text-align: center;
-
     margin-bottom: 30px;
 }
 
@@ -294,49 +238,41 @@ input {
 
 .section-title p {
     color: #777b88;
-
     margin-top: 8px;
 }
 
 
-/* ================================
+/* =========================
    CATEGORIES
-================================ */
+========================= */
 
 .categories {
     max-width: 1400px;
-
     margin: auto;
 
-    padding:
-        65px 7% 20px;
+    padding: 65px 7% 20px;
 }
 
 .category-buttons {
     display: flex;
-
     gap: 10px;
 
     flex-wrap: wrap;
-
     justify-content: center;
 }
 
 .category-btn {
-    border:
-        1px solid #dddfea;
+    border: 1px solid #dddfea;
 
     background: white;
 
-    padding:
-        11px 18px;
+    padding: 11px 18px;
 
     border-radius: 30px;
 
     cursor: pointer;
 
     font-weight: 600;
-
     color: #555866;
 
     transition: 0.2s;
@@ -345,24 +281,20 @@ input {
 .category-btn:hover,
 .category-btn.active {
     background: #6c4df6;
-
     color: white;
-
     border-color: #6c4df6;
 }
 
 
-/* ================================
+/* =========================
    TOOLS
-================================ */
+========================= */
 
 .tools-section {
     max-width: 1400px;
-
     margin: auto;
 
-    padding:
-        40px 7% 100px;
+    padding: 40px 7% 100px;
 }
 
 .tools-grid {
@@ -377,8 +309,7 @@ input {
 .tool-card {
     background: white;
 
-    border:
-        1px solid #e5e6ee;
+    border: 1px solid #e5e6ee;
 
     border-radius: 20px;
 
@@ -388,12 +319,10 @@ input {
 }
 
 .tool-card:hover {
-    transform:
-        translateY(-6px);
+    transform: translateY(-6px);
 
     box-shadow:
-        0 20px 45px
-        rgba(30,30,80,0.10);
+        0 20px 45px rgba(30,30,80,0.10);
 }
 
 .tool-icon {
@@ -415,7 +344,6 @@ input {
 
 .tool-card h3 {
     font-size: 20px;
-
     margin-bottom: 9px;
 }
 
@@ -424,15 +352,13 @@ input {
 
     font-size: 14px;
 
-    min-height: 67px;
+    min-height: 70px;
 }
 
 .tool-meta {
     display: flex;
 
-    justify-content:
-        space-between;
-
+    justify-content: space-between;
     align-items: center;
 
     margin-top: 20px;
@@ -452,13 +378,11 @@ input {
 
 .rating {
     color: #f59e0b;
-
     font-size: 13px;
 }
 
 .tool-actions {
     display: flex;
-
     gap: 8px;
 
     margin-top: 18px;
@@ -481,13 +405,11 @@ input {
 
 .visit-btn {
     background: #6c4df6;
-
     color: white;
 }
 
 .details-btn {
     background: #f0edff;
-
     color: #6248e5;
 }
 
@@ -502,9 +424,9 @@ input {
 }
 
 
-/* ================================
+/* =========================
    STATS
-================================ */
+========================= */
 
 .stats {
     background: #171923;
@@ -516,7 +438,6 @@ input {
 
 .stats-grid {
     max-width: 1000px;
-
     margin: auto;
 
     display: grid;
@@ -538,19 +459,17 @@ input {
 }
 
 
-/* ================================
+/* =========================
    CTA
-================================ */
+========================= */
 
 .cta {
     padding: 100px 7%;
-
     text-align: center;
 }
 
 .cta-box {
     max-width: 900px;
-
     margin: auto;
 
     padding: 70px 30px;
@@ -567,13 +486,11 @@ input {
 
 .cta h2 {
     font-size: 42px;
-
     margin-bottom: 15px;
 }
 
 .cta p {
     color: #656875;
-
     margin-bottom: 25px;
 }
 
@@ -594,19 +511,17 @@ input {
 }
 
 
-/* ================================
+/* =========================
    MODAL
-================================ */
+========================= */
 
 .modal {
     display: none;
 
     position: fixed;
-
     inset: 0;
 
-    background:
-        rgba(0,0,0,0.55);
+    background: rgba(0,0,0,0.55);
 
     z-index: 2000;
 
@@ -620,7 +535,6 @@ input {
     background: white;
 
     max-width: 520px;
-
     width: 100%;
 
     padding: 30px;
@@ -650,9 +564,9 @@ input {
 }
 
 
-/* ================================
+/* =========================
    FOOTER
-================================ */
+========================= */
 
 footer {
     background: #111219;
@@ -664,20 +578,22 @@ footer {
     text-align: center;
 }
 
+footer .logo {
+    color: white;
+}
+
 footer p {
     color: #999;
-
     margin-top: 10px;
 }
 
 
-/* ================================
+/* =========================
    DARK MODE
-================================ */
+========================= */
 
 body.dark {
     background: #0f1016;
-
     color: #f4f4f5;
 }
 
@@ -687,7 +603,6 @@ body.dark .search-box input,
 body.dark .category-btn,
 body.dark .modal-content {
     background: #191a23;
-
     border-color: #2c2d39;
 }
 
@@ -705,19 +620,8 @@ body.dark .logo span {
 
 body.dark .hero {
     background:
-
-        radial-gradient(
-            circle at 20% 20%,
-            #211a43 0,
-            transparent 28%
-        ),
-
-        radial-gradient(
-            circle at 80% 30%,
-            #17243f 0,
-            transparent 28%
-        ),
-
+        radial-gradient(circle at 20% 20%, #211a43 0, transparent 28%),
+        radial-gradient(circle at 80% 30%, #17243f 0, transparent 28%),
         #0f1016;
 }
 
@@ -727,7 +631,6 @@ body.dark .category-btn {
 
 body.dark .category-btn.active {
     background: #6c4df6;
-
     color: white;
 }
 
@@ -740,9 +643,9 @@ body.dark .cta-box {
 }
 
 
-/* ================================
+/* =========================
    RESPONSIVE
-================================ */
+========================= */
 
 @media(max-width:1000px) {
 
@@ -791,9 +694,9 @@ body.dark .cta-box {
 <body>
 
 
-<!-- ================================
+<!-- =========================
      NAVBAR
-================================ -->
+========================= -->
 
 <header class="navbar">
 
@@ -806,15 +709,11 @@ body.dark .cta-box {
         <ul class="nav-links">
 
             <li>
-                <a href="#home">
-                    Home
-                </a>
+                <a href="#home">Home</a>
             </li>
 
             <li>
-                <a href="#tools">
-                    AI Tools
-                </a>
+                <a href="#tools">AI Tools</a>
             </li>
 
             <li>
@@ -824,9 +723,7 @@ body.dark .cta-box {
             </li>
 
             <li>
-                <a href="#about">
-                    About
-                </a>
+                <a href="#about">About</a>
             </li>
 
         </ul>
@@ -844,15 +741,13 @@ body.dark .cta-box {
 </header>
 
 
-<!-- ================================
+<!-- =========================
      HERO
-================================ -->
+========================= -->
 
 <main>
 
-<section
-    class="hero"
-    id="home">
+<section class="hero" id="home">
 
     <span class="badge">
         ✨ Explore AI Technology
@@ -871,11 +766,10 @@ body.dark .cta-box {
     </h1>
 
     <p>
-
-        Explore powerful AI tools for
-        writing, design, coding, video,
-        marketing, productivity and more.
-
+        AIHub is a curated platform to discover
+        powerful AI tools for writing, design,
+        image generation, video, coding,
+        marketing and productivity.
     </p>
 
     <div class="search-box">
@@ -884,6 +778,7 @@ body.dark .cta-box {
             type="search"
             id="searchInput"
             placeholder="Search AI tools..."
+            aria-label="Search AI tools"
             onkeyup="searchTools()">
 
         <span class="search-icon">
@@ -895,9 +790,9 @@ body.dark .cta-box {
 </section>
 
 
-<!-- ================================
+<!-- =========================
      CATEGORIES
-================================ -->
+========================= -->
 
 <section
     class="categories"
@@ -914,7 +809,6 @@ body.dark .cta-box {
         </p>
 
     </div>
-
 
     <div class="category-buttons">
 
@@ -987,9 +881,9 @@ body.dark .cta-box {
 </section>
 
 
-<!-- ================================
-     TOOLS
-================================ -->
+<!-- =========================
+     AI TOOLS
+========================= -->
 
 <section
     class="tools-section"
@@ -1090,8 +984,9 @@ body.dark .cta-box {
             </h3>
 
             <p>
-                Google AI assistant for research,
-                writing, reasoning and productivity.
+                Google AI assistant for
+                research, writing, reasoning
+                and productivity.
             </p>
 
             <div class="tool-meta">
@@ -1513,9 +1408,9 @@ body.dark .cta-box {
 </section>
 
 
-<!-- ================================
+<!-- =========================
      STATS
-================================ -->
+========================= -->
 
 <section class="stats">
 
@@ -1562,9 +1457,9 @@ body.dark .cta-box {
 </section>
 
 
-<!-- ================================
+<!-- =========================
      CTA
-================================ -->
+========================= -->
 
 <section
     class="cta"
@@ -1597,29 +1492,30 @@ body.dark .cta-box {
 
 </section>
 
+
 </main>
 
 
-<!-- ================================
+<!-- =========================
      FOOTER
-================================ -->
+========================= -->
 
 <footer>
 
     <div class="logo">
-          Affreen
-</div>
+        Affreen
+    </div>
 
     <p>
-        © 2026 AIHub. Discover. Create. Automate.
+        © 2026 Affreen. All rights reserved.
     </p>
 
 </footer>
 
 
-<!-- ================================
+<!-- =========================
      MODAL
-================================ -->
+========================= -->
 
 <div
     class="modal"
@@ -1650,9 +1546,9 @@ body.dark .cta-box {
 
 <script>
 
-/* ================================
+/* =========================
    SEARCH
-================================ */
+========================= */
 
 function searchTools() {
 
@@ -1689,15 +1585,14 @@ function searchTools() {
             text.includes(input)
         ) {
 
-            card.style.display =
-                "block";
+            card.style.display = "block";
 
             found++;
 
         } else {
 
-            card.style.display =
-                "none";
+            card.style.display = "none";
+
         }
 
     });
@@ -1711,9 +1606,9 @@ function searchTools() {
 }
 
 
-/* ================================
+/* =========================
    CATEGORY FILTER
-================================ */
+========================= */
 
 function filterTools(
     category,
@@ -1741,15 +1636,14 @@ function filterTools(
             card.dataset.category === category
         ) {
 
-            card.style.display =
-                "block";
+            card.style.display = "block";
 
             found++;
 
         } else {
 
-            card.style.display =
-                "none";
+            card.style.display = "none";
+
         }
 
     });
@@ -1763,9 +1657,9 @@ function filterTools(
 }
 
 
-/* ================================
+/* =========================
    DARK MODE
-================================ */
+========================= */
 
 function toggleTheme() {
 
@@ -1775,9 +1669,7 @@ function toggleTheme() {
         .toggle("dark");
 
     const button =
-        document.querySelector(
-            ".theme-btn"
-        );
+        document.querySelector(".theme-btn");
 
     if (
         document.body
@@ -1790,13 +1682,14 @@ function toggleTheme() {
     } else {
 
         button.innerHTML = "🌙";
+
     }
 }
 
 
-/* ================================
+/* =========================
    VISIT TOOL
-================================ */
+========================= */
 
 function visitTool(url) {
 
@@ -1804,12 +1697,13 @@ function visitTool(url) {
         url,
         "_blank"
     );
+
 }
 
 
-/* ================================
-   DETAILS MODAL
-================================ */
+/* =========================
+   MODAL
+========================= */
 
 function showDetails(
     title,
@@ -1835,12 +1729,13 @@ function closeModal() {
     document
         .getElementById("toolModal")
         .style.display = "none";
+
 }
 
 
-/* ================================
+/* =========================
    CLOSE MODAL OUTSIDE
-================================ */
+========================= */
 
 window.onclick = function(event) {
 
@@ -1849,12 +1744,10 @@ window.onclick = function(event) {
             "toolModal"
         );
 
-    if (
-        event.target === modal
-    ) {
+    if (event.target === modal) {
 
-        modal.style.display =
-            "none";
+        modal.style.display = "none";
+
     }
 
 };
