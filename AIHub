@@ -1272,6 +1272,63 @@ body.dark .cta-box {
         </article>
 
 
+        <!-- AGENT QA -->
+
+        <article
+            class="tool-card"
+            data-category="Coding"
+            data-name="Agent QA">
+
+            <div class="tool-icon">
+                🧪
+            </div>
+
+            <h3>
+                Agent QA
+            </h3>
+
+            <p>
+                CLI and MCP server for
+                agent-led QA across web,
+                Android and iOS.
+            </p>
+
+            <div class="tool-meta">
+
+                <span class="category-label">
+                    Coding
+                </span>
+
+            </div>
+
+            <div class="tool-actions">
+
+                <button
+                    class="visit-btn"
+                    onclick="visitTool(
+                    'https://github.com/vostride/agent-qa'
+                    )">
+
+                    Visit
+
+                </button>
+
+                <button
+                    class="details-btn"
+                    onclick="showDetails(
+                    'Agent QA',
+                    'Source-available CLI and MCP server for orchestrating agent-led QA workflows across web, Android and iOS targets.'
+                    )">
+
+                    Details
+
+                </button>
+
+            </div>
+
+        </article>
+
+
         <!-- JASPER -->
 
         <article
