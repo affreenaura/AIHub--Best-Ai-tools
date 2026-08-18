@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Catch the Star ⭐</title>
+  <title>IdeaSpark - Idea Generator</title>
 
   <style>
     * {
@@ -15,316 +15,506 @@
 
     body {
       font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #667eea, #764ba2);
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      color: white;
+      padding: 20px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
     }
 
-    .game-container {
-      width: 95%;
+    .app {
+      width: 100%;
       max-width: 700px;
+      background: white;
+      border-radius: 25px;
+      padding: 35px;
       text-align: center;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.25);
     }
 
-    h1 {
-      font-size: 38px;
+    .logo {
+      font-size: 50px;
       margin-bottom: 10px;
     }
 
-    .subtitle {
-      margin-bottom: 20px;
-      opacity: 0.9;
+    h1 {
+      color: #333;
+      font-size: 34px;
     }
 
-    .info {
+    .subtitle {
+      color: #777;
+      margin-top: 8px;
+      margin-bottom: 25px;
+    }
+
+    .categories {
       display: flex;
-      justify-content: space-between;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 10px;
+      margin-bottom: 25px;
+    }
+
+    .category {
+      padding: 10px 18px;
+      border: 2px solid #ddd;
+      border-radius: 25px;
+      background: white;
+      cursor: pointer;
+      font-weight: bold;
+      color: #555;
+    }
+
+    .category:hover {
+      border-color: #667eea;
+      color: #667eea;
+    }
+
+    .category.active {
+      background: #667eea;
+      color: white;
+      border-color: #667eea;
+    }
+
+    .idea-card {
+      background: linear-gradient(135deg, #f5f7ff, #eee9ff);
+      border-radius: 20px;
+      padding: 30px;
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    #ideaIcon {
+      font-size: 50px;
       margin-bottom: 15px;
     }
 
-    .box {
-      background: rgba(255,255,255,0.18);
-      padding: 12px 20px;
-      border-radius: 12px;
-      flex: 1;
-      backdrop-filter: blur(8px);
-    }
-
-    .box span {
-      display: block;
-      font-size: 13px;
-      opacity: 0.8;
-    }
-
-    .box strong {
+    #ideaTitle {
       font-size: 25px;
+      color: #333;
+      margin-bottom: 12px;
     }
 
-    #gameArea {
-      position: relative;
-      width: 100%;
-      height: 450px;
-      background: rgba(255,255,255,0.12);
-      border: 2px solid rgba(255,255,255,0.4);
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    #ideaDescription {
+      color: #666;
+      line-height: 1.6;
+      font-size: 16px;
     }
 
-    #star {
-      position: absolute;
-      display: none;
-      font-size: 55px;
-      cursor: pointer;
-      user-select: none;
-      transition: transform 0.1s;
-    }
-
-    #star:hover {
-      transform: scale(1.15);
-    }
-
-    #message {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 24px;
-      font-weight: bold;
-      width: 90%;
-    }
-
-    button {
-      margin-top: 20px;
-      padding: 14px 35px;
+    .generate {
       border: none;
+      background: #667eea;
+      color: white;
+      padding: 15px 35px;
       border-radius: 30px;
-      background: white;
-      color: #5b4bb7;
       font-size: 17px;
       font-weight: bold;
       cursor: pointer;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      margin: 8px;
     }
 
-    button:hover {
+    .generate:hover {
       transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(102,126,234,0.35);
     }
 
-    .result {
-      margin-top: 15px;
-      font-size: 18px;
+    .save {
+      border: 2px solid #667eea;
+      background: white;
+      color: #667eea;
+      padding: 13px 30px;
+      border-radius: 30px;
+      font-size: 16px;
       font-weight: bold;
+      cursor: pointer;
+      margin: 8px;
+    }
+
+    .saved-section {
+      margin-top: 30px;
+      text-align: left;
+      display: none;
+    }
+
+    .saved-section h2 {
+      color: #333;
+      margin-bottom: 12px;
+    }
+
+    .saved-item {
+      background: #f5f5f5;
+      padding: 12px 15px;
+      border-radius: 10px;
+      margin-bottom: 8px;
+      color: #555;
     }
 
     @media (max-width: 600px) {
+
+      .app {
+        padding: 25px 18px;
+      }
+
       h1 {
-        font-size: 30px;
+        font-size: 28px;
       }
 
-      #gameArea {
-        height: 400px;
+      .idea-card {
+        padding: 25px 18px;
       }
 
-      .box {
-        padding: 10px;
+      #ideaTitle {
+        font-size: 21px;
       }
 
-      .box strong {
-        font-size: 20px;
-      }
-
-      #star {
-        font-size: 45px;
-      }
     }
   </style>
 </head>
 
 <body>
 
-  <div class="game-container">
+  <div class="app">
 
-    <h1>⭐ Catch the Star</h1>
+    <div class="logo">💡</div>
+
+    <h1>IdeaSpark</h1>
 
     <p class="subtitle">
-      Click the star as fast as you can!
+      Generate your next great idea ✨
     </p>
 
-    <div class="info">
 
-      <div class="box">
-        <span>Score</span>
-        <strong id="score">0</strong>
-      </div>
+    <div class="categories">
 
-      <div class="box">
-        <span>Time</span>
-        <strong id="time">30</strong>
-      </div>
+      <button class="category active" data-category="business">
+        💰 Business
+      </button>
 
-      <div class="box">
-        <span>Best</span>
-        <strong id="best">0</strong>
-      </div>
+      <button class="category" data-category="website">
+        🌐 Website
+      </button>
 
-    </div>
+      <button class="category" data-category="game">
+        🎮 Game
+      </button>
 
-    <div id="gameArea">
-
-      <div id="message">
-        Press Start Game to begin 🎮
-      </div>
-
-      <div id="star">
-        ⭐
-      </div>
+      <button class="category" data-category="content">
+        📱 Content
+      </button>
 
     </div>
 
-    <button id="startButton">
-      Start Game
+
+    <div class="idea-card">
+
+      <div id="ideaIcon">💡</div>
+
+      <h2 id="ideaTitle">
+        Click Generate Idea
+      </h2>
+
+      <p id="ideaDescription">
+        Choose a category and discover a new idea.
+      </p>
+
+    </div>
+
+
+    <button class="generate" onclick="generateIdea()">
+      ✨ Generate Idea
     </button>
 
-    <div class="result" id="result"></div>
+    <button class="save" onclick="saveIdea()">
+      ❤️ Save Idea
+    </button>
+
+
+    <div class="saved-section" id="savedSection">
+
+      <h2>❤️ Saved Ideas</h2>
+
+      <div id="savedIdeas"></div>
+
+    </div>
 
   </div>
 
 
   <script>
 
-    const gameArea = document.getElementById("gameArea");
-    const star = document.getElementById("star");
-    const scoreDisplay = document.getElementById("score");
-    const timeDisplay = document.getElementById("time");
-    const bestDisplay = document.getElementById("best");
-    const startButton = document.getElementById("startButton");
-    const message = document.getElementById("message");
-    const result = document.getElementById("result");
+    const ideas = {
 
-    let score = 0;
-    let timeLeft = 30;
-    let gameRunning = false;
-    let timer;
+      business: [
 
-    let bestScore = localStorage.getItem("bestScore") || 0;
+        {
+          icon: "👗",
+          title: "Custom Fashion Studio",
+          description:
+            "Create a small online service where customers can request custom dress designs and receive digital sketches."
+        },
 
-    bestDisplay.textContent = bestScore;
+        {
+          icon: "🎁",
+          title: "Personalized Gift Shop",
+          description:
+            "Sell customized digital and physical gifts for birthdays, weddings and special occasions."
+        },
 
+        {
+          icon: "📚",
+          title: "Student Notes Service",
+          description:
+            "Create clean and attractive digital notes, study planners and printable resources for students."
+        },
 
-    function moveStar() {
-
-      const areaWidth = gameArea.clientWidth;
-      const areaHeight = gameArea.clientHeight;
-
-      const starSize = 60;
-
-      const randomX =
-        Math.random() * (areaWidth - starSize);
-
-      const randomY =
-        Math.random() * (areaHeight - starSize);
-
-      star.style.left = randomX + "px";
-      star.style.top = randomY + "px";
-    }
-
-
-    function startGame() {
-
-      score = 0;
-      timeLeft = 30;
-      gameRunning = true;
-
-      scoreDisplay.textContent = score;
-      timeDisplay.textContent = timeLeft;
-
-      message.style.display = "none";
-      result.textContent = "";
-
-      star.style.display = "block";
-
-      startButton.textContent = "Restart Game";
-
-      moveStar();
-
-      clearInterval(timer);
-
-      timer = setInterval(function() {
-
-        timeLeft--;
-
-        timeDisplay.textContent = timeLeft;
-
-        if (timeLeft <= 0) {
-
-          endGame();
-
+        {
+          icon: "🎨",
+          title: "Social Media Design Service",
+          description:
+            "Offer affordable Instagram posts, posters and promotional designs for small businesses."
         }
 
-      }, 1000);
+      ],
+
+
+      website: [
+
+        {
+          icon: "💡",
+          title: "Daily Idea Generator",
+          description:
+            "A website that gives users random business, content, website and project ideas."
+        },
+
+        {
+          icon: "📅",
+          title: "Student Planner",
+          description:
+            "A simple website where students can organize assignments, exams and daily study tasks."
+        },
+
+        {
+          icon: "💰",
+          title: "Expense Tracker",
+          description:
+            "A browser-based tool that helps users track income, expenses and savings."
+        },
+
+        {
+          icon: "🎯",
+          title: "Goal Tracker",
+          description:
+            "Users can create goals and track their daily progress with simple progress bars."
+        }
+
+      ],
+
+
+      game: [
+
+        {
+          icon: "⭐",
+          title: "Catch the Star",
+          description:
+            "Players must click falling stars before they disappear. The fastest player gets the highest score."
+        },
+
+        {
+          icon: "🧠",
+          title: "Memory Match",
+          description:
+            "Flip cards and find matching pairs before the timer runs out."
+        },
+
+        {
+          icon: "🐍",
+          title: "Mini Snake",
+          description:
+            "Control a snake, collect food and try to achieve the highest score without hitting the wall."
+        },
+
+        {
+          icon: "🚀",
+          title: "Space Dodge",
+          description:
+            "Control a spaceship and avoid incoming asteroids for as long as possible."
+        }
+
+      ],
+
+
+      content: [
+
+        {
+          icon: "🎨",
+          title: "Design Tips Series",
+          description:
+            "Create short videos teaching one simple graphic design tip every day."
+        },
+
+        {
+          icon: "👗",
+          title: "Fashion Transformation",
+          description:
+            "Create before-and-after fashion styling videos showing how an outfit can be transformed."
+        },
+
+        {
+          icon: "💻",
+          title: "Website Building Series",
+          description:
+            "Create short tutorials showing how simple websites are built using HTML, CSS and JavaScript."
+        },
+
+        {
+          icon: "✨",
+          title: "Daily Motivation",
+          description:
+            "Create short motivational videos with original quotes, animations and simple visuals."
+        }
+
+      ]
+
+    };
+
+
+    let selectedCategory = "business";
+
+    let currentIdea = null;
+
+
+    const categoryButtons =
+      document.querySelectorAll(".category");
+
+
+    categoryButtons.forEach(button => {
+
+      button.addEventListener("click", function() {
+
+        categoryButtons.forEach(btn =>
+          btn.classList.remove("active")
+        );
+
+        this.classList.add("active");
+
+        selectedCategory =
+          this.dataset.category;
+
+      });
+
+    });
+
+
+    function generateIdea() {
+
+      const list =
+        ideas[selectedCategory];
+
+      const randomIndex =
+        Math.floor(Math.random() * list.length);
+
+      currentIdea = list[randomIndex];
+
+      document.getElementById("ideaIcon")
+        .textContent = currentIdea.icon;
+
+      document.getElementById("ideaTitle")
+        .textContent = currentIdea.title;
+
+      document.getElementById("ideaDescription")
+        .textContent = currentIdea.description;
+
     }
 
 
-    function endGame() {
+    function saveIdea() {
 
-      gameRunning = false;
+      if (!currentIdea) {
 
-      clearInterval(timer);
+        alert("Generate an idea first! 💡");
 
-      star.style.display = "none";
+        return;
+      }
 
-      message.style.display = "block";
+      let saved =
+        JSON.parse(
+          localStorage.getItem("savedIdeas")
+        ) || [];
 
-      message.innerHTML =
-        "⏰ Time's Up!<br>Your Score: " + score;
-
-      if (score > bestScore) {
-
-        bestScore = score;
-
-        localStorage.setItem(
-          "bestScore",
-          bestScore
+      const alreadySaved =
+        saved.some(
+          idea => idea.title === currentIdea.title
         );
 
-        bestDisplay.textContent = bestScore;
+      if (!alreadySaved) {
 
-        result.textContent =
-          "🏆 New High Score!";
+        saved.push(currentIdea);
+
+        localStorage.setItem(
+          "savedIdeas",
+          JSON.stringify(saved)
+        );
+
+        displaySavedIdeas();
+
+        alert("Idea saved! ❤️");
 
       } else {
 
-        result.textContent =
-          "Great job! Try to beat your best score.";
+        alert("This idea is already saved!");
 
       }
 
     }
 
 
-    star.addEventListener("click", function() {
+    function displaySavedIdeas() {
 
-      if (!gameRunning) return;
+      const saved =
+        JSON.parse(
+          localStorage.getItem("savedIdeas")
+        ) || [];
 
-      score++;
+      const section =
+        document.getElementById("savedSection");
 
-      scoreDisplay.textContent = score;
+      const container =
+        document.getElementById("savedIdeas");
 
-      moveStar();
+      if (saved.length === 0) {
 
-    });
+        section.style.display = "none";
+
+        return;
+      }
+
+      section.style.display = "block";
+
+      container.innerHTML = "";
+
+      saved.forEach(idea => {
+
+        const item =
+          document.createElement("div");
+
+        item.className = "saved-item";
+
+        item.textContent =
+          idea.icon + " " + idea.title;
+
+        container.appendChild(item);
+
+      });
+
+    }
 
 
-    startButton.addEventListener("click", function() {
-
-      startGame();
-
-    });
+    displaySavedIdeas();
 
   </script>
 
