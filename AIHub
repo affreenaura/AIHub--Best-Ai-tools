@@ -1,206 +1,332 @@
-extends Control
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-var age := 21
-var month := 1
-var salary := 30000
-var money := 10000
-var savings := 0
-var career_level := 1
+  <title>Catch the Star ⭐</title>
 
-var food := 5000
-var rent := 7000
-var transport := 2000
-var entertainment := 2000
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-var title_label: Label
-var stats_label: Label
-var event_label: Label
-var result_label: Label
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+    }
 
+    .game-container {
+      width: 95%;
+      max-width: 700px;
+      text-align: center;
+    }
 
-func _ready():
-	create_game_ui()
-	update_screen()
+    h1 {
+      font-size: 38px;
+      margin-bottom: 10px;
+    }
 
+    .subtitle {
+      margin-bottom: 20px;
+      opacity: 0.9;
+    }
 
-func create_game_ui():
-	# Background
-	var background = ColorRect.new()
-	background.color = Color("#101522")
-	background.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	add_child(background)
+    .info {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
 
-	# Main container
-	var container = VBoxContainer.new()
-	container.position = Vector2(60, 40)
-	container.size = Vector2(900, 650)
-	add_child(container)
+    .box {
+      background: rgba(255,255,255,0.18);
+      padding: 12px 20px;
+      border-radius: 12px;
+      flex: 1;
+      backdrop-filter: blur(8px);
+    }
 
-	# Title
-	title_label = Label.new()
-	title_label.text = "ADULTING"
-	title_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	title_label.add_theme_font_size_override("font_size", 42)
-	container.add_child(title_label)
+    .box span {
+      display: block;
+      font-size: 13px;
+      opacity: 0.8;
+    }
 
-	var subtitle = Label.new()
-	subtitle.text = "Earn • Spend • Save • Build Your Life"
-	subtitle.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	subtitle.add_theme_font_size_override("font_size", 20)
-	container.add_child(subtitle)
+    .box strong {
+      font-size: 25px;
+    }
 
-	# Stats
-	stats_label = Label.new()
-	stats_label.add_theme_font_size_override("font_size", 20)
-	container.add_child(stats_label)
+    #gameArea {
+      position: relative;
+      width: 100%;
+      height: 450px;
+      background: rgba(255,255,255,0.12);
+      border: 2px solid rgba(255,255,255,0.4);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    }
 
-	# Event
-	event_label = Label.new()
-	event_label.text = "Your first month starts now!"
-	event_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	event_label.add_theme_font_size_override("font_size", 18)
-	container.add_child(event_label)
+    #star {
+      position: absolute;
+      display: none;
+      font-size: 55px;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.1s;
+    }
 
-	# Buttons
-	var salary_button = Button.new()
-	salary_button.text = "💼 Receive Salary"
-	salary_button.custom_minimum_size = Vector2(0, 55)
-	salary_button.pressed.connect(receive_salary)
-	container.add_child(salary_button)
+    #star:hover {
+      transform: scale(1.15);
+    }
 
-	var expense_button = Button.new()
-	expense_button.text = "🧾 Pay Monthly Expenses"
-	expense_button.custom_minimum_size = Vector2(0, 55)
-	expense_button.pressed.connect(pay_expenses)
-	container.add_child(expense_button)
+    #message {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 24px;
+      font-weight: bold;
+      width: 90%;
+    }
 
-	var save_button = Button.new()
-	save_button.text = "💰 Save ₹5,000"
-	save_button.custom_minimum_size = Vector2(0, 55)
-	save_button.pressed.connect(save_money)
-	container.add_child(save_button)
+    button {
+      margin-top: 20px;
+      padding: 14px 35px;
+      border: none;
+      border-radius: 30px;
+      background: white;
+      color: #5b4bb7;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
 
-	var invest_button = Button.new()
-	invest_button.text = "📈 Invest ₹2,000"
-	invest_button.custom_minimum_size = Vector2(0, 55)
-	invest_button.pressed.connect(invest_money)
-	container.add_child(invest_button)
+    button:hover {
+      transform: translateY(-2px);
+    }
 
-	var next_button = Button.new()
-	next_button.text = "➡️ Next Month"
-	next_button.custom_minimum_size = Vector2(0, 55)
-	next_button.pressed.connect(next_month)
-	container.add_child(next_button)
+    .result {
+      margin-top: 15px;
+      font-size: 18px;
+      font-weight: bold;
+    }
 
-	# Result
-	result_label = Label.new()
-	result_label.add_theme_font_size_override("font_size", 22)
-	container.add_child(result_label)
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 30px;
+      }
 
+      #gameArea {
+        height: 400px;
+      }
 
-func update_screen():
-	stats_label.text = (
-		"👤 Age: %d\n" +
-		"📅 Month: %d\n" +
-		"💼 Career Level: %d\n" +
-		"💵 Salary: ₹%d\n" +
-		"💰 Cash: ₹%d\n" +
-		"🏦 Savings: ₹%d"
-	) % [age, month, career_level, salary, money, savings]
+      .box {
+        padding: 10px;
+      }
 
+      .box strong {
+        font-size: 20px;
+      }
 
-func receive_salary():
-	money += salary
-	event_label.text = "💼 Salary received!\n₹%d has been added to your cash." % salary
-	result_label.text = "Good start! Now decide how to use your money."
-	update_screen()
+      #star {
+        font-size: 45px;
+      }
+    }
+  </style>
+</head>
 
+<body>
 
-func pay_expenses():
-	var total_expenses = food + rent + transport + entertainment
+  <div class="game-container">
 
-	if money >= total_expenses:
-		money -= total_expenses
-		event_label.text = (
-			"🧾 Monthly expenses paid!\n" +
-			"Food: ₹%d\nRent: ₹%d\nTransport: ₹%d\nEntertainment: ₹%d"
-		) % [food, rent, transport, entertainment]
-		result_label.text = "₹%d spent this month." % total_expenses
-	else:
-		event_label.text = "⚠️ Not enough money to pay all expenses!"
-		result_label.text = "You need to manage your money better."
+    <h1>⭐ Catch the Star</h1>
 
+    <p class="subtitle">
+      Click the star as fast as you can!
+    </p>
 
-func save_money():
-	if money >= 5000:
-		money -= 5000
-		savings += 5000
-		event_label.text = "💰 ₹5,000 added to your savings!"
-		result_label.text = "Savings are growing!"
-	else:
-		event_label.text = "⚠️ You don't have ₹5,000 available."
-		result_label.text = "Try earning more or reducing expenses."
+    <div class="info">
 
-	update_screen()
+      <div class="box">
+        <span>Score</span>
+        <strong id="score">0</strong>
+      </div>
 
+      <div class="box">
+        <span>Time</span>
+        <strong id="time">30</strong>
+      </div>
 
-func invest_money():
-	if money >= 2000:
-		money -= 2000
-		savings += 2000
-		event_label.text = "📈 ₹2,000 invested!"
-		result_label.text = "Your investment will help your future."
-	else:
-		event_label.text = "⚠️ Not enough money to invest."
-		result_label.text = "Build your cash first."
+      <div class="box">
+        <span>Best</span>
+        <strong id="best">0</strong>
+      </div>
 
-	update_screen()
+    </div>
 
+    <div id="gameArea">
 
-func next_month():
-	month += 1
+      <div id="message">
+        Press Start Game to begin 🎮
+      </div>
 
-	# Every 12 months = one year
-	if month % 12 == 1:
-		age += 1
-		career_level += 1
-		salary += 5000
+      <div id="star">
+        ⭐
+      </div>
 
-		event_label.text = (
-			"🎉 Congratulations!\n" +
-			"You received a promotion!\n" +
-			"New salary: ₹%d"
-		) % salary
-	else:
-		random_life_event()
+    </div>
 
-	update_screen()
+    <button id="startButton">
+      Start Game
+    </button>
 
+    <div class="result" id="result"></div>
 
-func random_life_event():
-	var events = [
-		"🎁 You received a ₹3,000 bonus!",
-		"📱 Your phone needs a ₹2,000 repair.",
-		"🎓 You spent ₹1,500 on a new skill course.",
-		"🚗 Transport costs increased this month.",
-		"😊 You had a peaceful month with no major expenses."
-	]
-
-	var event = events[randi() % events.size()]
-	event_label.text = event
-
-	if event == events[0]:
-		money += 3000
-	elif event == events[1]:
-		if money >= 2000:
-			money -= 2000
-	elif event == events[2]:
-		if money >= 1500:
-			money -= 1500
-	elif event == events[3]:
-		if money >= 1000:
-			money -= 1000
+  </div>
 
 
-func _process(_delta):
-	update_screen()
+  <script>
+
+    const gameArea = document.getElementById("gameArea");
+    const star = document.getElementById("star");
+    const scoreDisplay = document.getElementById("score");
+    const timeDisplay = document.getElementById("time");
+    const bestDisplay = document.getElementById("best");
+    const startButton = document.getElementById("startButton");
+    const message = document.getElementById("message");
+    const result = document.getElementById("result");
+
+    let score = 0;
+    let timeLeft = 30;
+    let gameRunning = false;
+    let timer;
+
+    let bestScore = localStorage.getItem("bestScore") || 0;
+
+    bestDisplay.textContent = bestScore;
+
+
+    function moveStar() {
+
+      const areaWidth = gameArea.clientWidth;
+      const areaHeight = gameArea.clientHeight;
+
+      const starSize = 60;
+
+      const randomX =
+        Math.random() * (areaWidth - starSize);
+
+      const randomY =
+        Math.random() * (areaHeight - starSize);
+
+      star.style.left = randomX + "px";
+      star.style.top = randomY + "px";
+    }
+
+
+    function startGame() {
+
+      score = 0;
+      timeLeft = 30;
+      gameRunning = true;
+
+      scoreDisplay.textContent = score;
+      timeDisplay.textContent = timeLeft;
+
+      message.style.display = "none";
+      result.textContent = "";
+
+      star.style.display = "block";
+
+      startButton.textContent = "Restart Game";
+
+      moveStar();
+
+      clearInterval(timer);
+
+      timer = setInterval(function() {
+
+        timeLeft--;
+
+        timeDisplay.textContent = timeLeft;
+
+        if (timeLeft <= 0) {
+
+          endGame();
+
+        }
+
+      }, 1000);
+    }
+
+
+    function endGame() {
+
+      gameRunning = false;
+
+      clearInterval(timer);
+
+      star.style.display = "none";
+
+      message.style.display = "block";
+
+      message.innerHTML =
+        "⏰ Time's Up!<br>Your Score: " + score;
+
+      if (score > bestScore) {
+
+        bestScore = score;
+
+        localStorage.setItem(
+          "bestScore",
+          bestScore
+        );
+
+        bestDisplay.textContent = bestScore;
+
+        result.textContent =
+          "🏆 New High Score!";
+
+      } else {
+
+        result.textContent =
+          "Great job! Try to beat your best score.";
+
+      }
+
+    }
+
+
+    star.addEventListener("click", function() {
+
+      if (!gameRunning) return;
+
+      score++;
+
+      scoreDisplay.textContent = score;
+
+      moveStar();
+
+    });
+
+
+    startButton.addEventListener("click", function() {
+
+      startGame();
+
+    });
+
+  </script>
+
+</body>
+</html>
